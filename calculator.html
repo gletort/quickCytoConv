@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Calculate mean MT length</title>
- <script type="text/javascript"> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<title>Quick MT calculation</title>
+
+<script type="text/javascript"> 
  function call()
  {
 var gr=parseFloat(document.getElementById("gr").value);
@@ -13,14 +19,38 @@ var result=(sr*gr/(sr*cr-gr*rr));
  document.getElementById('total').innerHTML = result;
 }
 </script>
+ <script type="text/javascript"> 
+ function callRig()
+ {
+var kt=parseFloat(document.getElementById("kT").value);
+var lp=parseFloat(document.getElementById("Lp").value);
+var result=(kt*lp);
+document.getElementById('rig').innerHTML = result;
+}
+</script>
   
 </head>
 <body>
-Growth rate: <input type="text" id="gr" /><br />
-Shrinkage rate: <input type="text" id="sr" /><br />
-Catastrophe rate: <input type="text" id="cr" /><br />
-Rescue rate: <input type="text" id="rr" /><br />
-<input type="button" onclick="call()" value="Apply"/><br /><br />
- Mean MT length (from formula in Verde et al.): <p style="color:#FF0000" id="total"></p>
+<h2>
+Mean MT length
+</h2>
+Calculation of mean MT length for the MT dynamics parameters, according to formula from Verde et al., 1995): <br/>
+Growth rate: <input type="text" id="gr" />\(\mu m.s^{-1}\)<br />
+Shrinkage rate: <input type="text" id="sr" />\(\mu m.s^{-1}\)<br />
+Catastrophe rate: <input type="text" id="cr" />\(s^{-1}\)<br />
+Rescue rate: <input type="text" id="rr" />\(s^{-1}\)<br />
+<input type="button" onclick="call()" value="Apply"/><br />
+Mean MT length : <font style="color:#FF0000" id="total"></font> \(\mu m\)
+
+<br/>
+<h2>
+MT rigidity
+</h2>
+Conversion of MT persistence length to MT rigidity (R=kT * Lp)<br/>
+Temperature in kT: <input type="text" id="kT"/> \(pN.\mu m\) <br/>
+Persistence length: <input type="text" id="Lp"/> \( \mu m\) <br/>
+<input type="button" onclick="callRig()" value="Apply"/><br />
+Rigidity: <font style="color:#FF0000" id="rig"></font> \( pN.\mu m^2\)
+
 </body>
 </html>
