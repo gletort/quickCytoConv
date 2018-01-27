@@ -6,7 +6,7 @@
 <script type="text/javascript" async
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
-<title>Quick Cyto conversion</title>
+<title>Quick MT calculation</title>
 
 <script type="text/javascript"> 
  function call()
@@ -28,6 +28,26 @@ var result=(kt*lp);
 document.getElementById('rig').innerHTML = result;
 }
 </script>
+ <script type="text/javascript"> 
+ function callkT()
+ {
+var t=parseFloat(document.getElementById("T").value);
+var ind = document.getElementById("Mobility").selectedIndex;
+var res=0;
+if (ind == 0)
+{ 
+  res = t + 273,15; 
+  }
+else
+{ 
+ if (ind == 1) 
+ {res = (t + 459.67)/1.8;}
+}
+result = 1.38064852 * res * 0.00001;
+document.getElementById('temp').innerHTML = result;
+document.getElementById('kT').value = result;
+}
+</script>
   
 </head>
 <body>
@@ -41,16 +61,30 @@ Catastrophe rate: <input type="text" id="cr" />\(s^{-1}\)<br />
 Rescue rate: <input type="text" id="rr" />\(s^{-1}\)<br />
 <input type="button" onclick="call()" value="Apply"/><br />
 Mean MT length : <font style="color:#FF0000" id="total"></font> \(\mu m\)
-
 <br/>
+
 <h2>
-Filament rigidity
+Temperature to kT
 </h2>
-Conversion of filament persistence length to rigidity (K = kT * Lp)<br/>
+Conversion of temperature in degrees (°C or °F) to temperature energy (kT). <br/>
+Temperature: <input type="text" id="T"/> <select style="width: 280px" id="Mobility" name="Mobility">
+  <option selected>°C</option>
+  <option> °F </option>
+  </select><br/>
+<input type="button" onclick="callkT()" value="Apply"/><br />
+Temperature energy: <font style="color:#FF0000" id="temp"></font> \( pN.\mu m\)
+<br/>
+  
+<h2>
+MT rigidity
+</h2>
+Conversion of MT persistence length to MT rigidity (R=kT * Lp)<br/>
 Temperature in kT: <input type="text" id="kT"/> \(pN.\mu m\) <br/>
 Persistence length: <input type="text" id="Lp"/> \( \mu m\) <br/>
 <input type="button" onclick="callRig()" value="Apply"/><br />
 Rigidity: <font style="color:#FF0000" id="rig"></font> \( pN.\mu m^2\)
+<br/>
 
 </body>
 </html>
+
