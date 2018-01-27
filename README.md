@@ -1,7 +1,7 @@
 # QuickCytoConv
 
 Online conversion tool for classic cytoskeleton values.
-Click [here](http://rawgit.com/gletort/meanMTlength/master/calculator.html) to use it.
+Click [here](http://rawgit.com/gletort/quickCytoConv/master/calculator.html) to use it.
 
 ## meanMTlength
 Calculation of mean MT length from MT dynamics parameter, from formula in Verde et al., 1995
